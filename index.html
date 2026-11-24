@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minimarket A la Vuelta</title>
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    background: linear-gradient(135deg, #f0f9f7, #ffdda9, #9ce6d8);
+}
+
+.contenedor {
+    width: 100%;
+    max-width: 1000px;
+    min-height: 500px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: white;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px #164b4b25;
+    border-top: 5px solid #ffb84d;
+}
+
+.panel-izquierdo {
+    background: linear-gradient(145deg, #103047, #006b68);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 35px;
+}
+
+.etiqueta {
+    border: 1px solid #f5ad42;
+    color: #ffcc75;
+    padding: 12px 22px;
+    border-radius: 30px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+.logo {
+    width: 100%;
+    padding: 28px 12px;
+    background: #fff4df;
+    border-radius: 18px;
+    color: #003f49;
+}
+
+.logo .icono {
+    font-size: 65px;
+}
+
+.logo h1 {
+    font-size: clamp(24px, 4vw, 38px);
+    font-weight: 900;
+    color: #007c76;
+    text-shadow: 2px 2px #ff9b19;
+}
+
+.logo h1 span {
+    color: #f58213;
+}
+
+.panel-izquierdo p {
+    margin-top: 25px;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.panel-derecho {
+    padding: 42px 38px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.subtitulo {
+    color: #00766f;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.panel-derecho h2 {
+    font-size: 32px;
+    color: #15344c;
+    margin-bottom: 10px;
+}
+
+.descripcion {
+    color: #607080;
+    font-size: 17px;
+    margin-bottom: 35px;
+}
+
+label {
+    display: block;
+    margin-bottom: 9px;
+    color: #172d40;
+    font-size: 18px;
+}
+
+input {
+    width: 100%;
+    padding: 17px;
+    border: 1px solid #cce0dc;
+    border-radius: 12px;
+    font-size: 16px;
+    margin-bottom: 24px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #009d8e;
+    box-shadow: 0 0 0 4px #009d8e20;
+}
+
+.password {
+    display: flex;
+    margin-bottom: 28px;
+}
+
+.password input {
+    margin: 0;
+    border-radius: 12px 0 0 12px;
+}
+
+.password button {
+    padding: 0 17px;
+    background: white;
+    border: 1px solid #009d8e;
+    border-radius: 0 12px 12px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.ingresar {
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #00616a, #00866c);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.ingresar:hover {
+    filter: brightness(1.1);
+}
+
+@media(max-width: 700px) {
+    body { padding: 15px; }
+    .contenedor {
+        grid-template-columns: 1fr;
+    }
+    .panel-izquierdo {
+        padding: 30px 20px;
+    }
+    .panel-derecho {
+        padding: 35px 25px;
+    }
+    .panel-derecho h2 {
+        font-size: 27px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="contenedor">
+
+    <section class="panel-izquierdo">
+        <div class="etiqueta">PUNTO DE VENTA</div>
+
+        <div class="logo">
+            <div class="icono">🏪</div>
+            <h1>MINIMARKET<br>
+            <span>A LA VUELTA</span></h1>
+        </div>
+
+        <p>Caja, inventario y ventas en un solo lugar.</p>
+    </section>
+
+    <section class="panel-derecho">
+        <div class="subtitulo">ACCESO PARA EL PERSONAL</div>
+
+        <h2>Acceso al sistema</h2>
+        <p class="descripcion">
+            Ingresa a la caja y al inventario de tu tienda.
+        </p>
+
+        <form id="formulario">
+            <label for="usuario">Usuario</label>
+            <input type="text" id="usuario"
+                   placeholder="Escribe tu usuario" required>
+
+            <label for="contrasena">Contraseña</label>
+
+            <div class="password">
+                <input type="password" id="contrasena"
+                       placeholder="Escribe tu contraseña" required>
+                <button type="button" onclick="mostrar()"
+                        aria-label="Mostrar contraseña">👁</button>
+            </div>
+
+            <button class="ingresar" type="submit">
+                Ingresar &nbsp; →
+            </button>
+        </form>
+    </section>
+
+</div>
+
+<script>
+function mostrar() {
+    const campo = document.getElementById("contrasena");
+    campo.type = campo.type === "password" ? "text" : "password";
+}
+
+document.getElementById("formulario").addEventListener("submit", function(e) {
+    e.preventDefault();
+    alert("Esta es una página de demostración. El inicio de sesión real requiere conectar el sistema PHP y MySQL.");
+});
+</script>
+
+</body>
+</html>
